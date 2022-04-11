@@ -479,7 +479,7 @@ plot(compare_performance(Table_regression2,model2, rank = TRUE))
 
 ## Conclusion
 
-    Interpretation:
+   Interpretation:
 
 
     The first model was built taking into account only continuous quantitative variables, namely garage area, above grade living area (square feet) and the total square feet of the basement area. The second one, on the other hand, was created by using the subsets method and setting a limit of 3 predictor variables; the resulting model contained the variables overall quality, above grade living area (square feet), and rating of basement finished area (Type 1 finished square feet). In quantitative terms, both models differ in that the second one contains discrete variables. Regarding their similarities, both incorporate the variable above grade living area.
