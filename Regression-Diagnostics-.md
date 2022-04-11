@@ -5,6 +5,10 @@ Ondina Castillo
 
 ## 1. Analyzing a housing dataset (Ames Housing Dataset)
 
+Introduction:
+
+  This paper’s aim is to create a regression model and analysis from a specific data set. The data that will be used was created by the Ames Assessorís Office and it contains information regarding Housing in Ames, Iowa from 2006 to 2010. The data file contains both categorical and quantitative variable, nonetheless, for the purpose of this paper the focus will be exclusively on the numerical ones.
+  
 ### 2. EDA
 
 ``` r
