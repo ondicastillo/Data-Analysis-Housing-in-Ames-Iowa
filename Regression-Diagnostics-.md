@@ -469,17 +469,15 @@ plot(compare_performance(Table_regression2,model2, rank = TRUE))
 
     Interpretation:
 
-    To compare the best model chosen by the subset method and the one that was elaborated in this paper an R package was used to analyze and see the performance indicators of both models.
+    When comparing the ideal model chosen by the subset method vs the one manually elaborated in this paper, the results indicate that the best performing model is the one selected by the "best subsets method".
 
-    The results indicate taht the model that performs the best is the one selected by the subsets method.
-
-    Moreover, a plot was drawn to see visually the performance of each of the model, and once again it is very clear that the one that should be chosen is model2 (the subsets method model)
+    Moreover, a plot was drawn to the performance of each of the model visually, and once again it is very clear that the one that should be chosen is the second model (the one elected by the best subsets method).
 
 ## Conclusion
 
     Interpretation:
 
 
-    The first model was built taking into account only continuous quantitative variables, namely garage area, above grade living area (square feet) and total square feet of basement area. The second one, on the other hand, was created by using the subsets method and the variables that were selected for creating the best 3 predictors model were overall quality, above grade living area (square feet), and rating of basement finished area (Type 1 finished square feet). The difference between the two models is that the second one contained discrete variables, while the first one was constrained in that aspect. Nonetheless, both agree on incorporating the variable above grade living area.
-    When it came to selecting the most appropriate model, after comparing both it become clear that the second one was better because it had a better R2 and also a better overall score.
-    To conclude, after this analysis it can be stated that a house that does better regarding overall quality, above grade living area (square feet), and rating of basement finished area (Type 1 finished square feet), will have a higher sale price. This information could be very beneficial for potential buyers or realtors.
+    The first model was built taking into account only continuous quantitative variables, namely garage area, above grade living area (square feet) and the total square feet of the basement area. The second one, on the other hand, was created by using the subsets method and setting a limit of 3 predictor variables; the resulting model contained the variables overall quality, above grade living area (square feet), and rating of basement finished area (Type 1 finished square feet). In quantitative terms, both models differ in that the second one contains discrete variables. Regarding their similarities, both incorporate the variable above grade living area.
+    When it comes to selecting the most appropriate model, the analysis suggest that the second one is better since it had a higher R-squared value and also a better overall score.
+    To conclude, a house that has a higher score regarding overall quality, above grade living area (square feet), and rating of basement finished area (Type 1 finished square feet), will have a higher sale price. This information could be very beneficial for potential buyers or realtors.
