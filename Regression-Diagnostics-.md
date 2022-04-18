@@ -1,13 +1,11 @@
 Regression Dianostics with R
 ================
-Ondina Castillo
-3/2/2022
 
 ## 1. Analyzing a housing dataset (Ames Housing Dataset)
 
 Introduction:
 
-  This paper’s aim is to create a regression model and analysis from a specific data set. The data that will be used was created by the Ames Assessorís Office and it contains information regarding Housing in Ames, Iowa from 2006 to 2010. The data file contains both categorical and quantitative variable, nonetheless, for the purpose of this paper the focus will be exclusively on the numerical ones.
+What are the variables that influence the pricing (Sale Price) of houses in Ames, Iowa? This paper aims to answer this question by creating a regression model that can predict the monetary cost of housing. To achieve this goal, a dataset of the real estate market in Iowa from 2006 to 2016 will be used.
   
 ### 2. EDA
 
@@ -27,7 +25,7 @@ dim(data.only.numeric)
 only.numeric.noNA<- na.omit(data.only.numeric)
 ```
 
-### 3. Creating Correlation Matrix
+### 3. Creating a Correlation Matrix
 
 ``` r
 correlation.matrix<- cor(only.numeric.noNA, method ="pearson")
@@ -38,7 +36,7 @@ corrplot::corrplot(cor(correlation.matrix), tl.cex = 0.4)
 
     Interpretation:
 
-    The variables with a higher correlation with SalePrice are: Overall.Qual(0.8), Gr.Liv.Area(0.71), Garage.Cars(0.66), Total.Bsmt.SF(0.65), Garage area(0.65), Full Bath(0.56), Year.Built(0.56), garage.Yr.Blt(0.54), Year.Remod.Add(0.54), Mas.Vnr.Area (0.52), and TotRms.AbvGrd(0.52)
+The predictor's that influence the pricing of houses the most: Overall.Qual(0.8), Gr.Liv.Area(0.71), Garage.Cars(0.66), Total.Bsmt.SF(0.65), Garage area(0.65), Full Bath(0.56), Year.Built(0.56), garage.Yr.Blt(0.54), Year.Remod.Add(0.54), Mas.Vnr.Area (0.52), and TotRms.AbvGrd(0.52). 
 
 ### 4. Creating Graphs
 
@@ -86,13 +84,13 @@ ggplot(data =only.numeric.noNA) + aes(x = TotRms.AbvGrd, y = SalePrice, log="y")
 
     Interpretation:
 
-    The higher the correlation between the variable SalePrice and the independent variable , the better the fit of the linear regression. For example, in Figure 4 the correlation is very close to 0 because the data points are scattered and clustered and don’t appear to follow a linear trajectory.
+    The higher the correlation coefficient between the predictor and the price of housing, the better the linear regression fits. I.E, in Figure 4 the correlation is very close to 0, thus, the data points are scattered and clustered and don’t appear to follow a linear trajectory.
 
-    On the contrary, the graphs from Figure 3 and Figure 5 showcase a distinguishable linear relationship between the independent variable and the dependent variable.
+Furthermore, in Figure 5 the linear relationship is also not sufficiently good since the points become scattered towards the end.
 
-    Finally, in Figure 5 the linear relationship is not ideal since the point become scattered at the end.
+    On the contrary, the graphs from Figure 3 and Figure 5 showcase a distinguishable linear relationship between their independent variables and the dependent variables. Thus, these predictors are good candidates to be used in our regression model.
 
-    Furthermore, after obtaining the regression summary in R, we can now go ahead and create a regression model to analyze the data. The continuous variables with the highest correlation coefficients with SalePrice were used. Thus, resulting equation from our regression model was done utilizing the variables SalePrice, Garage.Area, Gr.Liv.Area, and Total.Bsmt.SF.
+ Finally, a regression model was created using the continuous variables with the highest correlation coefficients with SalePrice. Thus, the mathematical equation of the model was created by using the predictors Garage.Area, Gr.Liv.Area, and Total.Bsmt.SF, and the dependent variable SalePrice.
 
 ### 8. Creating regression model with 3 continuous variables
 
@@ -228,9 +226,7 @@ summary(Table_regression)
 
     Interpretation:
 
-    As an be seen from the model, all 3 variables’ coefficients (Garage.Area, Gr.Liv.Area, and Total.Bsmt.SF) have a p-value that is less than 0.05 which means that they are all significant and should not be removed.
-
-    Moreover, the adjusted R2 is quite high.
+    As can be seen from the model, all 3 variables’ coefficients (Garage.Area, Gr.Liv.Area, and Total.Bsmt.SF) have a p-value lower than 0.05 which means that they are all significant and should remain in the model. Moreover, the adjusted R2 of the model is quite high, which is a good sign.
 
 ``` r
 #b. Plotting regression model
@@ -251,7 +247,9 @@ vif(Table_regression)
 
     Interpretation:
 
-    The Homoscedasticity assumption has been violated by our model since in the Scale-Location graph the points aren't scattered. Moreover, in the Normal Q-Q Plot the points don’t align perfectly to the line, nonetheless, the disparity isn’t extreme either. Finally, in both the residuals vs fitted plot and the residuals vs leverage plot there are a few outliers or possible unusual observations.
+The Homoscedasticity assumption was violated by our model since in the Scale-Location graph the points aren't scattered. Moreover, in the Normal Q-Q Plot, the points don’t align perfectly with the line. Nonetheless, it is also important to mention that the disparity isn’t extreme either. 
+
+Finally,  there are a few outliers or possible unusual observations in the residuals vs fitted plot, and the residuals vs leverage plot. (These data points should be removed moving forward to fix the model).
 
 ### 9. Looking for unusual observations or outliers
 
@@ -309,8 +307,8 @@ hat.plot(Table_regression)
 
     Interpretation:
 
-    As can be seen  there are quite a few outliers.
-    Also, in the graph below it becomes apparent once again that there are a few outliers, which probably should be removed since they go beyond the red line.
+    As can be observed, once again our model contains a few outliers.
+     Also, in the graph below this observation becomes apparent once again, thus, these outliers should be removed because they go beyond the red line).
 
 ### 10. Eliminating unusual observations to improve model
 
@@ -372,9 +370,11 @@ summary(Table_regression2)
 
     Interpretation:
 
-    After obtaining these findings, eliminating all these influential observations to improve the model became necessary. After doing that procedure, the model improved noticeably as can be seen on the graph.
+  The findings from the regression model's diagnostics indicate that changes should be made.
+
+Thus, in order to improve the model all the influential observations were removed. Consequently, the model improved noticeably as can be seen on the graph above.
      
-    This time around, the Q-Q plot line is almost perfect, and the points appear to be scattered in the Scale-Location graph. In short, it can be said that the main issues of the models were eliminated by removing the outliers in the data.
+    This time around, the Q-Q plotline is almost perfect, and the points appear to be scattered in the Scale-Location graph (as they should be in an effective model). Therefore, removing the outliers in the data was enough to solve the main issues of the model.
 
 ### 11 Examining normality assumption
 
@@ -392,7 +392,7 @@ hist(only.numeric.no.outliers$SalePrice)
 
     Interpretation:
 
-    Qhen looking at the histogram of the SalePrice, it can be observed that the data went from being right-skewed to having a normal distribution.
+    When looking at the histogram of the SalePrice, the data goes from being right-skewed to having a normal distribution.
 
 ### 12 Using subsets method to identify the best model
 
@@ -445,9 +445,9 @@ par(mfrow = c (2,2))
 
     Interpretation
 
-    The best model that was selected by the programming language contained the following variables: Overall.Qual, BsmtFin.SF.1, and Gr.Liv.Area.
+    The best model that was selected by R contained the following variables: Overall.Qual, BsmtFin.SF.1, and Gr.Liv.Area.
 
-    As can be seen inthe model has a higher adjusted R2 which indicates that it is probably more adequate that the one fabricated in this study. Nonetheless, before making a conclusion the regression model was plotted to see how its graphs looked like; to determine if they comply with the necessary assumptions. And, as can be seen , the model contains less outliers/influential observations than the one that was first graphed in this paper (before all outliers were eliminated to improve the model).
+Also, the proposal of the computer has a higher adjusted R2 than the manually created model. Nonetheless, before concluding that it is indeed better, the new regression model was plotted to see what its graphs looked like and to determine whether they comply with the necessary assumptions. And, as can be seen, the model contains fewer outliers/influential observations than the one that was first graphed in this paper (before all outliers were eliminated to improve the model). Hence, perhaps it would be more appropriate to use the model created by the subset's method to predict the pricing of houses in Ames Iowa.
 
 ### 13 Comparing both models
 
@@ -473,15 +473,17 @@ plot(compare_performance(Table_regression2,model2, rank = TRUE))
 
     Interpretation:
 
-    When comparing the ideal model chosen by the subset method vs the one manually elaborated in this paper, the results indicate that the best performing model is the one selected by the "best subsets method".
+    When comparing the model chosen by the subset method vs the one manually elaborated in this paper, the comparisons and evaluations indicate that the best performing model is the one selected by the computer.
 
-    Moreover, a plot was drawn to the performance of each of the model visually, and once again it is very clear that the one that should be chosen is the second model (the one elected by the best subsets method).
+    In addition, a plot was drawn to visually check the performance of each model, and once again the one that performs best is the second model (created using the subset's method).
 
 ## Conclusion
 
    Interpretation:
+   
+The first model was built taking into account only continuous, quantitative variables, namely garage area, above grade living area (sqft), and the total square feet of the basement area. The second one, on the other hand, was created by using the subsets method, and a limit of 3 predictors was set so that it could be compared to the one that was created manually. The resulting model contained the variables overall quality, above grade living area (square feet), and rating of basement finished area (Type 1 finished square feet). 
+Both models have one variable in common; above grade living area but differ on the rest.
 
+    When it comes to selecting the most appropriate model, the analysis leans towards the second since it has a higher R-squared value and a better overall score.
 
-    The first model was built taking into account only continuous quantitative variables, namely garage area, above grade living area (square feet) and the total square feet of the basement area. The second one, on the other hand, was created by using the subsets method and setting a limit of 3 predictor variables; the resulting model contained the variables overall quality, above grade living area (square feet), and rating of basement finished area (Type 1 finished square feet). In quantitative terms, both models differ in that the second one contains discrete variables. Regarding their similarities, both incorporate the variable above grade living area.
-    When it comes to selecting the most appropriate model, the analysis suggest that the second one is better since it had a higher R-squared value and also a better overall score.
-    To conclude, a house that has a higher score regarding overall quality, above grade living area (square feet), and rating of basement finished area (Type 1 finished square feet), will have a higher sale price. This information could be very beneficial for potential buyers or realtors.
+   In conclusion, it can be stated that a house with a superior overall quality, a larger above grade living area (square feet), and a better rating of its basement finished area, will have a higher sale price. This information is beneficial for potential buyers or realtors since these 3 variables are what will change the monetary value of houses the most.
