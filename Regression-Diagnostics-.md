@@ -1,5 +1,3 @@
-Regression Dianostics with R
-================
 
 ## 1. Analyzing the Housing Market in Ames, Iowa
 
@@ -34,7 +32,7 @@ corrplot::corrplot(cor(correlation.matrix), tl.cex = 0.4)
 
 ![](Regression-Diagnostics-_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-    Interpretation:
+Interpretation:
 
 The predictor's that influence the pricing of houses the most: Overall.Qual(0.8), Gr.Liv.Area(0.71), Garage.Cars(0.66), Total.Bsmt.SF(0.65), Garage area(0.65), Full Bath(0.56), Year.Built(0.56), garage.Yr.Blt(0.54), Year.Remod.Add(0.54), Mas.Vnr.Area (0.52), and TotRms.AbvGrd(0.52). 
 
