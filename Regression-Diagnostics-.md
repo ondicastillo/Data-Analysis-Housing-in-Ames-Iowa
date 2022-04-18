@@ -1,7 +1,7 @@
 Regression Dianostics with R
 ================
 
-## 1. Analyzing a housing dataset (Ames Housing Dataset)
+## 1. Analyzing the Housing Market in Ames, Iowa
 
 What are the variables that influence the pricing (Sale Price) of houses in Ames, Iowa? 
 
