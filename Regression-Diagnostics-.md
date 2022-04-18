@@ -5,7 +5,7 @@ What are the variables that influence the pricing (Sale Price) of houses in Ames
 
 This paper aims to answer this question by creating a regression model that can predict the monetary cost of housing. To achieve this goal, a dataset of the real estate market in Iowa from 2006 to 2016 will be used.
   
-### 2. EDA
+#### 2. EDA
 
 ``` r
 #a. Visualizing summary of the data set
@@ -23,7 +23,7 @@ dim(data.only.numeric)
 only.numeric.noNA<- na.omit(data.only.numeric)
 ```
 
-### 3. Creating a Correlation Matrix
+#### 3. Creating a Correlation Matrix
 
 ``` r
 correlation.matrix<- cor(only.numeric.noNA, method ="pearson")
@@ -36,7 +36,7 @@ Interpretation:
 
 The predictor's that influence the pricing of houses the most: Overall.Qual(0.8), Gr.Liv.Area(0.71), Garage.Cars(0.66), Total.Bsmt.SF(0.65), Garage area(0.65), Full Bath(0.56), Year.Built(0.56), garage.Yr.Blt(0.54), Year.Remod.Add(0.54), Mas.Vnr.Area (0.52), and TotRms.AbvGrd(0.52). 
 
-### 4. Creating Graphs
+#### 4. Creating Graphs
 
 ``` r
 library("car")
@@ -50,7 +50,7 @@ scatterplot(Lot.Area~SalePrice, data=ames.housing)
 ```
 
 ![](Regression-Diagnostics-_files/figure-gfm/unnamed-chunk-4-2.png)<!-- -->
-### 5. Plotting Scatterplots with variable with highest and lowest
+#### 5. Plotting Scatterplots with variable with highest and lowest
 correlation with SalePrice
 
 ``` r
@@ -63,7 +63,7 @@ ggplot(data =only.numeric.noNA) + aes(x = Overall.Qual, y = SalePrice, log="y") 
 ```
 
 ![](Regression-Diagnostics-_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
-### 6. Variable with lowest correlation with SalePrice
+#### 6. Variable with lowest correlation with SalePrice
 
 ``` r
 ggplot(data =only.numeric.noNA) + aes(x = Misc.Val, y = SalePrice, log="y") + theme_light()+ 
@@ -71,7 +71,7 @@ ggplot(data =only.numeric.noNA) + aes(x = Misc.Val, y = SalePrice, log="y") + th
 ```
 
 ![](Regression-Diagnostics-_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
-### 7. Variable with a correlation closest to 0.5
+#### 7. Variable with a correlation closest to 0.5
 
 ``` r
 ggplot(data =only.numeric.noNA) + aes(x = TotRms.AbvGrd, y = SalePrice, log="y") + theme_light()+ 
@@ -90,7 +90,7 @@ On the contrary, the graphs from Figure 3 and Figure 5 showcase a distinguishabl
 
 Finally, a regression model was created using the continuous variables with the highest correlation coefficients with SalePrice. Thus, the mathematical equation of the model was created by using the predictors Garage.Area, Gr.Liv.Area, and Total.Bsmt.SF, and the dependent variable SalePrice.
 
-### 8. Creating regression model with 3 continuous variables
+#### 8. Creating regression model with 3 continuous variables
 
 ``` r
 #a. Creating regression model
@@ -250,7 +250,7 @@ The Homoscedasticity assumption was violated by our model since in the Scale-Loc
 
 Finally,  there are a few outliers or possible unusual observations in the residuals vs fitted plot, and the residuals vs leverage plot. (These data points should be removed moving forward to fix the model).
 
-### 9. Looking for unusual observations or outliers
+#### 9. Looking for unusual observations or outliers
 
 ``` r
 outlierTest(model=Table_regression)
@@ -309,7 +309,7 @@ Interpretation:
 As can be observed, once again our model contains a few outliers.
 Also, in the graph below this observation becomes apparent once again, thus, these outliers should be removed because they go beyond the red line).
 
-### 10. Eliminating unusual observations to improve model
+#### 10. Eliminating unusual observations to improve model
 
 ``` r
 cooksd <- cooks.distance(Table_regression)
@@ -375,7 +375,7 @@ Thus, in order to improve the model all the influential observations were remove
      
 This time around, the Q-Q plotline is almost perfect, and the points appear to be scattered in the Scale-Location graph (as they should be in an effective model). Therefore, removing the outliers in the data was enough to solve the main issues of the model.
 
-### 11 Examining normality assumption
+#### 11 Examining normality assumption
 
 ``` r
 hist(data.only.numeric$SalePrice)
@@ -393,7 +393,7 @@ Interpretation:
 
 When looking at the histogram of the SalePrice, the data goes from being right-skewed to having a normal distribution.
 
-### 12 Using subsets method to identify the best model
+#### 12 Using subsets method to identify the best model
 
 ``` r
 library(leaps)
@@ -448,7 +448,7 @@ The best model that was selected by R contained the following variables: Overall
 
 Also, the proposal of the computer has a higher adjusted R2 than the manually created model. Nonetheless, before concluding that it is indeed better, the new regression model was plotted to see what its graphs looked like and to determine whether they comply with the necessary assumptions. And, as can be seen, the model contains fewer outliers/influential observations than the one that was first graphed in this paper (before all outliers were eliminated to improve the model). Hence, perhaps it would be more appropriate to use the model created by the subset's method to predict the pricing of houses in Ames Iowa.
 
-### 13 Comparing both models
+#### 13 Comparing both models
 
 ``` r
 library(performance)
