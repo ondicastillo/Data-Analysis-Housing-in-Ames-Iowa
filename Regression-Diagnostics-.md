@@ -3,9 +3,9 @@ Regression Dianostics with R
 
 ## 1. Analyzing a housing dataset (Ames Housing Dataset)
 
-Introduction:
+What are the variables that influence the pricing (Sale Price) of houses in Ames, Iowa? 
 
-What are the variables that influence the pricing (Sale Price) of houses in Ames, Iowa? This paper aims to answer this question by creating a regression model that can predict the monetary cost of housing. To achieve this goal, a dataset of the real estate market in Iowa from 2006 to 2016 will be used.
+This paper aims to answer this question by creating a regression model that can predict the monetary cost of housing. To achieve this goal, a dataset of the real estate market in Iowa from 2006 to 2016 will be used.
   
 ### 2. EDA
 
