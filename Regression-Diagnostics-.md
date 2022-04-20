@@ -479,8 +479,8 @@ In addition, a plot was drawn to visually check the performance of each model, a
 ## Conclusion
 
    
-The first model was built taking into account only continuous, quantitative variables, namely garage area, above grade living area (sqft), and the total square feet of the basement area. The second one, on the other hand, was created by using the subsets method, and a limit of 3 predictors was set so that it could be compared to the one that was created manually. The resulting model contained the variables overall quality, above grade living area (square feet), and rating of basement finished area (Type 1 finished square feet). 
-Both models have one variable in common; above grade living area but differ on the rest.
+The first model was built taking into account only continuous, quantitative variables, namely garage area, above grade living area (sqft), and the total square feet of the basement area. The second one, on the other hand, was created by using the subsets method, and a limit of 3 predictors was set so that it could be compared to the model that was created manually. The resulting regression contained the variables overall quality, above grade living area (square feet), and rating of basement finished area (Type 1 finished square feet). 
+Both models have one variable in common which is above grade living area, but differ on the rest.
 
 When it comes to selecting the most appropriate model, the analysis leans towards the second since it has a higher R-squared value and a better overall score.
 
