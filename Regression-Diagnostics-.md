@@ -3,7 +3,7 @@
 
 What are the variables that influence the pricing (Sale Price) of houses in Ames, Iowa? 
 
-This paper aims to answer this question by creating a regression model that can predict the monetary cost of housing. To achieve this goal, a dataset of the real estate market in Iowa from 2006 to 2016 will be used.
+This paper aims to answer this question by creating a regression model that can predict the monetary cost of housing. To achieve this goal, a dataset of the real estate market in Ames, Iowa from 2006 to 2016 was used.
   
 #### 2. EDA
 
@@ -34,7 +34,7 @@ corrplot::corrplot(cor(correlation.matrix), tl.cex = 0.4)
 
 Interpretation:
 
-The predictor's that influence the pricing of houses the most: Overall.Qual(0.8), Gr.Liv.Area(0.71), Garage.Cars(0.66), Total.Bsmt.SF(0.65), Garage area(0.65), Full Bath(0.56), Year.Built(0.56), garage.Yr.Blt(0.54), Year.Remod.Add(0.54), Mas.Vnr.Area (0.52), and TotRms.AbvGrd(0.52). 
+The predictors that influence the pricing of houses the most are: Overall.Qual(0.8), Gr.Liv.Area(0.71), Garage.Cars(0.66), Total.Bsmt.SF(0.65), Garage area(0.65), Full Bath(0.56), Year.Built(0.56), Garage.Yr.Blt(0.54), Year.Remod.Add(0.54), Mas.Vnr.Area (0.52), and TotRms.AbvGrd(0.52). 
 
 #### 4. Creating Graphs
 
@@ -82,7 +82,7 @@ ggplot(data =only.numeric.noNA) + aes(x = TotRms.AbvGrd, y = SalePrice, log="y")
 
 Interpretation:
 
-The higher the correlation coefficient between the predictor and the price of housing, the better the linear regression fits. I.E, in Figure 4 the correlation is very close to 0, thus, the data points are scattered and clustered and don’t appear to follow a linear trajectory.
+The higher the correlation coefficient between the predictor and the price of housing, the better the fit of the linear regression. I.E, in Figure 4 the correlation is very close to 0, thus, the data points are scattered and clustered and don’t appear to follow a linear trajectory.
 
 Furthermore, in Figure 5 the linear relationship is also not sufficiently good since the points become scattered towards the end.
 
@@ -225,7 +225,7 @@ summary(Table_regression)
 
 Interpretation
 
-As can be seen from the model, all 3 variables’ coefficients (Garage.Area, Gr.Liv.Area, and Total.Bsmt.SF) have a p-value lower than 0.05 which means that they are all significant and should remain in the model. Moreover, the adjusted R2 of the model is quite high, which is a good sign.
+As can be seen from the model, all 3 variables’ coefficients (Garage.Area, Gr.Liv.Area, and Total.Bsmt.SF) have a p-value that is lower than 0.05 which means that all variables are significant and should remain in the model. Moreover, the adjusted R2 of the model is quite high, which is a good sign.
 
 ``` r
 #b. Plotting regression model
@@ -248,7 +248,7 @@ Interpretation:
 
 The Homoscedasticity assumption was violated by our model since in the Scale-Location graph the points aren't scattered. Moreover, in the Normal Q-Q Plot, the points don’t align perfectly with the line. Nonetheless, it is also important to mention that the disparity isn’t extreme either. 
 
-Finally,  there are a few outliers or possible unusual observations in the residuals vs fitted plot, and the residuals vs leverage plot. (These data points should be removed moving forward to fix the model).
+Finally,  there are a few outliers or possible unusual observations in the residuals vs fitted plot, and in the residuals vs leverage plot. (These data points will be removed moving forward to fix the model).
 
 #### 9. Looking for unusual observations or outliers
 
@@ -306,7 +306,7 @@ hat.plot(Table_regression)
 
 Interpretation:
 
-As can be observed, once again our model contains a few outliers.
+As can be observed once again in the Cook's D Chart, our model contains a few outliers.
 Also, in the graph below this observation becomes apparent once again, thus, these outliers should be removed because they go beyond the red line).
 
 #### 10. Eliminating unusual observations to improve model
@@ -369,7 +369,7 @@ summary(Table_regression2)
 
 Interpretation:
 
-The findings from the regression model's diagnostics indicate that changes should be made.
+The findings from the regression model's diagnostics indicate that adjustments should be made.
 
 Thus, in order to improve the model all the influential observations were removed. Consequently, the model improved noticeably as can be seen on the graph above.
      
